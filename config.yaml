@@ -1,0 +1,44 @@
+# uncomment sections to enable relevant functionality 
+
+# path to dir containing data
+data_directory: ./demo
+
+# names of raw data files
+raw_data: 
+  - IR.Cai
+  - DP4
+  - ACD
+
+# calculate scc plot
+classify_molecules: true
+
+# plot scc plot
+plot_classification: true
+
+# value to start y-axis at
+y_start: 0.7
+
+# # save name for scc plot
+# save_name: IR.Cai_DP4_ACD
+
+# # save dir for scc plot; if save_name and save_dir are not both specified, plot will not save
+# save_dir: /Users/benji/Documents/Academic/PhD/Year_1/solid_state_IR/plotting
+
+# probability-like data to normalise
+# include methods whose scores form a probability distribution, i.e. sum to 1
+# this includes DP4, and any softmaxed method
+probability_data:
+  - DP4
+
+# methods to combine
+# this example combines IR.Cai and ACD
+score_combination:
+  - - IR.Cai
+    - ACD
+  
+# methods to combine with given weighting
+# this example combines IR.Cai and DP4 in a 95:5 ratio
+score_combination_weighted:
+  - - IR.Cai
+    - DP4
+    - 0.95
