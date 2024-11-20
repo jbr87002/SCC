@@ -264,7 +264,13 @@ class SCC_Analyser:
        self.execute_strategy()
        
 def main():
-    analyser = SCC_Analyser()
+    parser = argparse.ArgumentParser(description="SCC analysis")
+    parser.add_argument('--config', type=str, help='Path to the YAML configuration file')
+    args = parser.parse_args()
+    if args.config:
+        analyser = SCC_Analyser(args.config)
+    else:
+        analyser = SCC_Analyser()
     analyser.run_analysis()
 
 if __name__ == '__main__':
