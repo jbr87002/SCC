@@ -22,8 +22,6 @@ class Settings:
         self.probability_data = []
         self.y_start = 0.7
 
-# ... (keep existing imports and Settings class) ...
-
 class BaseAnalyser:
     """Base class for analysis containing common functionality"""
     def __init__(self, yaml_file_path='config.yaml'):
@@ -279,7 +277,7 @@ class ROC_Analyser(BaseAnalyser):
         
         results = []
         total_positives = len(df)  # One correct structure per comparison
-        total_negatives = len(df) * len(decoy_columns)  # Number of decoys per comparison
+        total_negatives = df[decoy_columns].count().sum()
         
         for threshold in thresholds:
             # True Positives: correct structures (col '0') above threshold
