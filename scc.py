@@ -235,7 +235,7 @@ class SCC_Analyser:
 
             # Plot a solid line for the entire data set first
             data_false = data[data['Guess'] == False]
-            plt.plot(data_false['Classified'], data_false['Correct'], color=current_colour, linewidth=2, label=f"{method}; AOC = {round(aoc, 3)}")
+            plt.plot(data_false['Classified'], data_false['Correct'], color=current_colour, linewidth=2, label=f"{method}; CA = {round(auc, 3)}")
             # Overlay dashed lines where 'Guess' is True
             prev_row = None
             for idx, row in data.iterrows():
