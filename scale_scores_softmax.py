@@ -39,13 +39,14 @@ def main(args):
     score_columns = ['0', '1', '2', '3']
     df1 = pd.read_csv(args.target) 
     data1 = df1[score_columns].values
-    if 'DP4' in args.target:
+    if 'DP4' in args.target.split('/')[-1]:
         print('No need to softmax DP4* scores, they are already a probability distribution')
         softmaxed_data1 = data1
     else:
         softmaxed_data1 = softmax(data1)
         df1[score_columns] = softmaxed_data1
         df1.to_csv(args.target_output, index=False)
+        print(f"Softmaxed target saved to {args.target_output}")
     
     # read in the data to scale to target
     df2 = pd.read_csv(args.input_file)
@@ -62,7 +63,6 @@ def main(args):
     df2.to_csv(args.output_file, index=False)
 
     print(f"Required temperature: {T_optimal}")
-    print(f"Softmaxed target saved to {args.target_output}")
     print(f"Scaled output saved to {args.output_file}")
 
 if __name__ == "__main__":
