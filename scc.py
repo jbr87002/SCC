@@ -5,7 +5,7 @@ import numpy as np
 import argparse
 from scipy.integrate import trapezoid
 import yaml
-plt.style.use(['science', 'nature', 'bright'])
+plt.style.use(['science', 'nature', 'high-vis'])
 
 class Settings:
     def __init__(self):
@@ -240,8 +240,8 @@ class SCC_Analyser(BaseAnalyser):
         plt.legend(loc='lower left')
         plt.tight_layout()
         if settings.save_name and settings.save_dir:
-            save_path = f'{settings.save_dir}/{settings.save_name}.pdf'
-            plt.savefig(save_path)
+            save_path = f'{settings.save_dir}/{settings.save_name}.png'
+            plt.savefig(save_path, dpi=600)
         else:
             plt.show()
 
@@ -322,8 +322,8 @@ class ROC_Analyser(BaseAnalyser):
         plt.tight_layout()
         
         if settings.save_name and settings.save_dir:
-            save_path = f'{settings.save_dir}/{settings.save_name}_roc.pdf'
-            plt.savefig(save_path)
+            save_path = f'{settings.save_dir}/{settings.save_name}_roc.png'
+            plt.savefig(save_path, dpi=600)
         else:
             plt.show()
 
