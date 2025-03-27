@@ -221,23 +221,23 @@ class SCC_Analyser(BaseAnalyser):
             current_colour = colour_cycle[idx % len(colour_cycle)]
 
             data_false = data[data['Guess'] == False]
-            plt.plot(data_false['Classified'], data_false['Correct'], color=current_colour, linewidth=2, label=f"{method}; CA = {round(auc, 3)}")
+            # unknown = 1 - classified
+            plt.plot(1 - data_false['Classified'], data_false['Correct'], color=current_colour, linewidth=2, label=f"{method}; CA = {round(auc, 3)}")
             
             prev_row = None
             for idx, row in data.iterrows():
                 if row['Guess']:
                     if prev_row is not None:
-                        plt.plot([prev_row['Classified'], row['Classified']],
+                        plt.plot([1 - prev_row['Classified'], 1 - row['Classified']],
                                 [prev_row['Correct'], row['Correct']],
                                 linestyle=':', color=current_colour, linewidth=2, zorder=10)
                 prev_row = row
 
-        plt.xlabel('Classification rate')
-        plt.ylabel('Fraction of classifications correct')
-        plt.title('Fraction of classifications correct vs classification rate for various conditions')
+        plt.xlabel('Unknown')
+        plt.ylabel('True positive rate')
         plt.xlim(0, 1)
         plt.ylim(settings.y_start,1.01)
-        plt.legend(loc='lower left')
+        plt.legend(loc='lower right')
         plt.tight_layout()
         if settings.save_name and settings.save_dir:
             save_path = f'{settings.save_dir}/{settings.save_name}.png'
