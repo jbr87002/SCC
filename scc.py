@@ -1,13 +1,8 @@
 """
 Generate SCC plots for the combinations in the manuscript.
 
-Usage
------
-python scc_rank.py <config.yml> [--outdir FIG_DIR]
-
-The YAML *config.yml* must define the same keys as before (dp4_df, acd_df, ...),
-plus a root *data_dir*.
-
+Usage:
+python scc.py <config.yml> [--outdir FIG_DIR]
 """
 
 import argparse
@@ -169,14 +164,11 @@ def build_curves(
         if not np.isfinite(lo) or not np.isfinite(hi):
             return np.array([np.nan]), np.array([np.nan])
 
-        # Higher score => more likely positive
         taus = np.linspace(lo - 1e-12, hi + 1e-12, n_points)
 
-        # Vectorised counts
         pos_sorted = np.sort(pos)
         neg_sorted = np.sort(neg)
-        # For threshold tau, TP = count(pos >= tau) = len(pos) - idx_first_gt
-        # Use searchsorted on sorted arrays for speed/stability
+
         tpr = (pos.size - np.searchsorted(pos_sorted, taus, side="left")) / max(pos.size, 1)
         fpr = (neg.size - np.searchsorted(neg_sorted, taus, side="left")) / max(neg.size, 1)
         return fpr, tpr
@@ -314,14 +306,14 @@ PLOT_RECIPES = {
     },
     "IR_high_low_combination": {
         "curves": [
-            "IR.Cai",  # plotted multiple times with different variants below
+            "IR.Cai",  
         ],
         "ir_variant": None,  # special handling
         "kind": "scc",
     },
     "IR_lb": {
         "curves": [
-            "IR.Cai",  # idem – handled specially
+            "IR.Cai",  
         ],
         "ir_variant": None,
         "kind": "scc",
@@ -421,9 +413,9 @@ def main(argv=None):
                 for hl in HIGH_LOW:
                     tag = f"IR.Cai ({hl}_{lb})"
                     curves_variant = _get_curves(hl, lb)
-                    curves_to_plot[tag] = curves_variant["IR.Cai"]  # SCC already
+                    curves_to_plot[tag] = curves_variant["IR.Cai"]  
                     curve_names.append(tag)
-            # Inject into plotter
+            
             plot_curves(curves_to_plot, curve_names, kind="scc",
                         title=name, out_file=os.path.join(args.outdir, f"{name}.png"))
             continue
