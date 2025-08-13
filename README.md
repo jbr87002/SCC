@@ -57,30 +57,40 @@ To configure the environment correctly, follow the following steps:
 ### SCC plots
 
 1. **Prepare your input file**: The input file contains the settings for the
-   plot, and should be named `config.yaml`. An example input file is provided
-   with all the available settings shown. The path to the data needs to be
-   specified in the input file.
+   plot, and should be named `config.yaml`. An example input file which
+   reproduces the plots in the paper is provided.
 
 2. **Run the script**: Execute the script from the command line. With no
    modification to the input file provided, a plot will be generated using data
-   from the `demo/` directory.
+   from the `data/` directory.
 ```bash
-python scc.py
+python scc.py config.yaml --outdir ./plots
 ```
 
 Execution time should be a few seconds.
 
 ## Output
 
-`scc.py` will save a pdf of the SCC plot if `save_name` and `save_dir` are both
-specified in `config.yaml`. Otherwise, the plot will simply be shown.
+`scc.py` will save the plots to the `plots/` directory.
 
 ## Data
-`data` contains 3 files:
-- `DP4.csv` contains DP4* scores for the molecules in the test set
-- `IR.Cai.csv` contains IR.Cai scores, obtained using high-level theory and a
-  hwhm of 12cm<sup>-1</sup>
+`data` contains 9 files:
+- `DP4_H.csv` contains DP4* scores for the molecules in the test set
 - `ACD.csv` contains ACD scores for the molecules in the test set
+- `ACD_auto.csv` contains ACD scores for the molecules in the test set, obtained
+  using ACD's automatic peak-picking tool
+- `IR_high_fwhm_8.csv` contains IR.Cai scores for the molecules in the test set,
+  obtained using high-level theory and a fwhm of 8cm<sup>-1</sup>
+- `IR_high_fwhm_10.csv` contains IR.Cai scores for the molecules in the test
+  set, obtained using high-level theory and a fwhm of 10cm<sup>-1</sup>
+- `IR_high_fwhm_12.csv` contains IR.Cai scores for the molecules in the test
+  set, obtained using high-level theory and a fwhm of 12cm<sup>-1</sup>
+- `IR_low_fwhm_8.csv` contains IR.Cai scores for the molecules in the test set,
+  obtained using low-level theory and a fwhm of 8cm<sup>-1</sup>
+- `IR_low_fwhm_10.csv` contains IR.Cai scores for the molecules in the test set,
+  obtained using low-level theory and a fwhm of 10cm<sup>-1</sup>
+- `IR_low_fwhm_12.csv` contains IR.Cai scores for the molecules in the test set,
+  obtained using low-level theory and a fwhm of 12cm<sup>-1</sup>
 
 The data are in csv format. The 'Molecule' column identifies the molecule in
 question from the test set. The 'Comparison' column identifies which isomers are

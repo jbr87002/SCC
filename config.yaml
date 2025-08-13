@@ -2,11 +2,11 @@
 dp4_df: DP4_H.csv
 acd_df: ACD.csv
 acd_auto_df: ACD_auto.csv
-ir_high_8_df: IR_high_hwhm_8.csv
-ir_high_10_df: IR_high_hwhm_10.csv
-ir_high_12_df: IR_high_hwhm_12.csv
-ir_low_8_df: IR_low_hwhm_8.csv
-ir_low_10_df: IR_low_hwhm_10.csv
-ir_low_12_df: IR_low_hwhm_12.csv
+ir_high_8_df: IR_high_fwhm_8.csv
+ir_high_10_df: IR_high_fwhm_10.csv
+ir_high_12_df: IR_high_fwhm_12.csv
+ir_low_8_df: IR_low_fwhm_8.csv
+ir_low_10_df: IR_low_fwhm_10.csv
+ir_low_12_df: IR_low_fwhm_12.csv
 
 data_dir: ./data
