@@ -14,8 +14,6 @@ of <sup>1</sup>H NMR and IR spectroscopy".
 The main plotting script is contained in `scc.py`. An example input file is
 contained in `config.yaml`.
 
-The softmax scaling script is contained in `scale_scores_softmax.py`.
-
 ## Requirements
 - Operating system: this software has been tested on macOS Sonoma 14.5. It
   should work on other operating systems, but has not been tested on them.
@@ -72,34 +70,13 @@ python scc.py
 
 Execution time should be a few seconds.
 
-### Softmax scaling
-
-`scale_scores_softmax.py` takes 4 required command line arguments:
-- `--target`: Path to the scaling target, i.e. the method whose standard
-  deviation is to be matched
-- `--target_output`: Softmax will be applied to the scores of the scaling
-  target, and the new scores saved to this path
-- `--input_file`: Path to the data to be scaled
-- `--output_file`: Save path for the scaled data 
-
-The scaling can be demonstrated using data from the `demo/` directory:
-```bash
-cd demo
-python ../scale_scores_softmax.py --target IR.Cai.csv --target_output IR.Cai_softmax.csv --input_file DP4.csv --output_file DP4_softmax.csv
-```
-
-Execution time should be at most a few seconds.
-
 ## Output
 
 `scc.py` will save a pdf of the SCC plot if `save_name` and `save_dir` are both
 specified in `config.yaml`. Otherwise, the plot will simply be shown.
 
-`scale_scores_softmax.py` will save csv files containing softmax-scaled data to
-the paths specified by the `--target_output` and `--output_file` arguments.
-
-## Example data
-`demo` contains 3 files:
+## Data
+`data` contains 3 files:
 - `DP4.csv` contains DP4* scores for the molecules in the test set
 - `IR.Cai.csv` contains IR.Cai scores, obtained using high-level theory and a
   hwhm of 12cm<sup>-1</sup>
