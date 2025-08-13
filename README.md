@@ -79,13 +79,12 @@ Execution time should be a few seconds.
 - `ACD.csv` contains ACD scores for the molecules in the test set
 - `ACD_auto.csv` contains ACD scores for the molecules in the test set, obtained
   using ACD's automatic peak-picking tool
-- Six CSV files (`IR_high_fwhm_8.csv`, `IR_high_fwhm_10.csv`, `IR_high_fwhm_12.csv`, `IR_low_fwhm_8.csv`, `IR_low_fwhm_10.csv`, `IR_low_fwhm_12.csv`) contain IR.Cai scores for the test set molecules.  
-
-The filename format is:
-`IR_<theory>_fwhm_<value>.csv`
-where:
-- `<theory>` is `high` or `low` for high- or low-level theory, and  
-- `<value>` is the full width at half maximum (FWHM, in cm⁻¹) used in the calculation.
+- Six CSV files (`IR_high_fwhm_8.csv`, `IR_high_fwhm_10.csv`,
+`IR_high_fwhm_12.csv`, `IR_low_fwhm_8.csv`, `IR_low_fwhm_10.csv`,
+`IR_low_fwhm_12.csv`) contain IR.Cai scores for the test set molecules. The
+filename format is: `IR_<theory>_fwhm_<value>.csv` where:
+  - `<theory>` is `high` or `low` for high- or low-level theory, and  
+  - `<value>` is the full width at half maximum (FWHM, in cm⁻¹) used in the calculation.
 
 
 The data are in csv format. The 'Molecule' column identifies the molecule in
